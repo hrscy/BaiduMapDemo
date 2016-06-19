@@ -1,8 +1,7 @@
-# 百度地图 Demo
+## iOS百度地图Demo
 
 ## 效果图
-![效果图](images/效果图.gif)
-
+![效果图](http://img.blog.csdn.net/20160619190252047)
 ## 一、环境设置
 
 1.开发环境：Xocode 7.3.1
@@ -20,16 +19,14 @@
 ```
 也即：
 
-![ATS配置](images/ATS.png)
-
-配置完后就可以使用 HTTP 了。
+![ATS配置](http://img.blog.csdn.net/20160619185003011)
+![](ATS.png)
 
 > 注：
 > bitcode 是 xcode 7 之后新增的配置选项，默认为 `YES`，我们提交程序到 App store 上时，Xcode 会将程序编译为一个中间表现形式(bitcode)。然后 App store 会再将这个 bitcode 编译为可执行的 64 位或 32 位程序。
 
 在这个 Demo 里不需要使用 bitcode 功能，所以设置为了 `NO`。
-
-![bitcode设置为NO](images/bitcode.png)
+![bitcode设置为NO](http://img.blog.csdn.net/20160619185430389)
 
 4.[导入百度地图 SDK](http://lbsyun.baidu.com/index.php?title=iossdk/guide/buildproject)
 
@@ -78,34 +75,20 @@ pod install --no-repo-update
 方法：选中工程名，在右键菜单中选择 Add Files to “工程名”…，从BaiduMapAPI_Map.framework||Resources 文件中选择 mapapi.bundle 文件，并勾选 “Copy items if needed” 复选框，单击 “Add” 按钮，将资源文件添加到工程中。
 
 使用 cocoaPods 导入的百度地图，运行之后可能会报错：
-
-![错误1.png](images/错误1.png)
-
+![错误1.png](http://img.blog.csdn.net/20160619185520921)
 这时需要进入
-
-![解决错误1.png](images/解决错误1.png)
-
+![解决错误1](http://img.blog.csdn.net/20160619185606232)
 将所有的百度地图 framework 导入到工程中：
-
-![AddOther.png](images/AddOther.png)
-
+![AddOther](http://img.blog.csdn.net/20160619185645607)
 然后再运行，错误解决，会出现下面的错误：
-
-![错误2.png](images/错误2.png)
-
+![这里写图片描述](http://img.blog.csdn.net/20160619185735498)
 这时进入 info.plist 添加 Bundle display name，如下图：
-
-![解决错误2.png](images/解决错误2.png)
-
+![这里写图片描述](http://img.blog.csdn.net/20160619185813577)
 配置百度地图资源文件：
-
-![mapapi_bundle.png](images/mapapi_bundle.png)
-![勾选copy.png](images/勾选copy.png)
-
+![这里写图片描述](http://img.blog.csdn.net/20160619185851936)
+![mapapi_bundle.png](mapapi_bundle.png)
 再次运行，控制台会输出『设置成功』则说明设置成功了。
-
-![pod_install.png](images/pod_install.png)
-
+![这里写图片描述](http://img.blog.csdn.net/20160619185923780)
 ## 二、代码
 
 ### 代码结构：
@@ -142,21 +125,14 @@ NSString *mapKey = @"x5EHcRvWZm8uzkt3HUpGBQU3";
 ```
 
 2.使用 cocoaPods 可能会遇到下面的问题
-
-![cocoapods错误.png](images/cocoapods错误.png)
-
+![这里写图片描述](http://img.blog.csdn.net/20160619190000662)
 解决办法如下：
+![这里写图片描述](http://img.blog.csdn.net/20160619190052797)
 
-![cocoapods解决办法.png](images/cocoapods解决办法.png)
 
 再次运行就不会报错了。
 
 3.说明：地图上的标注抓取的是美团的数据。
-
-### [iOS百度地图问题总结(三)](http://www.jianshu.com/p/f069e520ecf8)
-### [iOS百度地图问题总结(四)](http://www.jianshu.com/p/c56b7c7743c7)
-
-**如果上面两篇文章解决不了你遇到的问题，欢迎给我留言。**
 
 > **说明：**
 > **这只是一个简单的 demo，写的比较粗糙，大家可以给我留言，需要完成什么样的功能，如果有时间，我会尽力加上需要的功能，后面我还会继续更新。谢谢大家的支持！如果你觉得我写的 demo 对你有所帮助，请在 github 上下载的时候顺手给个 star，不胜感激！**
@@ -164,6 +140,7 @@ NSString *mapKey = @"x5EHcRvWZm8uzkt3HUpGBQU3";
 ### **下面是 demo 下载地址：**
 
 ### [github 下载地址](https://github.com/hrscy/BaiduMapDemo)
+
 
 
 
