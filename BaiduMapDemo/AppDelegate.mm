@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <BaiduMapAPI_Base/BMKMapManager.h>
 
-@interface AppDelegate ()
+@interface AppDelegate (){
+    BMKMapManager *_mapManager;
+}
 
 @end
 
@@ -16,7 +19,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    NSString *mapKey = @"x5EHcRvWZm8uzkt3HUpGBQU3";
+    _mapManager = [[BMKMapManager alloc]init];
+    
+    // 如果要关注网络及授权验证事件，请设定generalDelegate参数
+    BOOL ret = [_mapManager start:mapKey generalDelegate:nil];
+    if (ret) {
+        NSLog(@"设置成功！");
+    }
+    
+    
     return YES;
 }
 
@@ -28,6 +40,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="YMPaopaoView">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="shn-gd-B6D">
+                    <rect key="frame" x="10" y="10" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="9sS-LC-nms"/>
+                        <constraint firstAttribute="height" constant="70" id="nuH-L5-88i"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rw-fu-cXF">
+                    <rect key="frame" x="90" y="15" width="140" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRk-Ji-eCo">
+                    <rect key="frame" x="90" y="62" width="37.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yox-IC-3nZ">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
+                    <connections>
+                        <action selector="coverButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="hLZ-Aw-CZn"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Yox-IC-3nZ" secondAttribute="trailing" id="56k-In-ieB"/>
+                <constraint firstItem="8rw-fu-cXF" firstAttribute="leading" secondItem="shn-gd-B6D" secondAttribute="trailing" constant="10" id="E84-Qv-p45"/>
+                <constraint firstItem="pRk-Ji-eCo" firstAttribute="leading" secondItem="8rw-fu-cXF" secondAttribute="leading" id="Gyb-8y-4Yx"/>
+                <constraint firstItem="Yox-IC-3nZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J9Y-JK-ANy"/>
+                <constraint firstAttribute="bottom" secondItem="Yox-IC-3nZ" secondAttribute="bottom" id="SiA-Pn-ltG"/>
+                <constraint firstAttribute="trailing" secondItem="8rw-fu-cXF" secondAttribute="trailing" constant="10" id="Tsv-hG-ipP"/>
+                <constraint firstItem="8rw-fu-cXF" firstAttribute="top" secondItem="shn-gd-B6D" secondAttribute="top" constant="5" id="avh-Nl-Lws"/>
+                <constraint firstItem="Yox-IC-3nZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cdA-Lx-yde"/>
+                <constraint firstItem="shn-gd-B6D" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ixj-d8-mav"/>
+                <constraint firstItem="shn-gd-B6D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="taJ-Ws-Uwh"/>
+                <constraint firstItem="pRk-Ji-eCo" firstAttribute="bottom" secondItem="shn-gd-B6D" secondAttribute="bottom" id="uxs-68-XCh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="areaNameLabel" destination="pRk-Ji-eCo" id="uru-Bu-YvG"/>
+                <outlet property="nameLabel" destination="8rw-fu-cXF" id="azf-vJ-qFn"/>
+                <outlet property="shopImage" destination="shn-gd-B6D" id="edP-Ye-gDM"/>
+            </connections>
+            <point key="canvasLocation" x="13" y="293"/>
+        </view>
+    </objects>
+</document>

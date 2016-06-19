@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BFD35816212235F5E886B36A14F39BFD04601F7F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EB6F1874BF01D6B5D182347B04875AB968E86B7E" : 0,
+    "BFD35816212235F5E886B36A14F39BFD04601F7F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "10145291-2953-47E0-AB96-1C438B36BC2B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EB6F1874BF01D6B5D182347B04875AB968E86B7E" : "",
+    "BFD35816212235F5E886B36A14F39BFD04601F7F" : "BaiduMapDemo\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BaiduMapDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BaiduMapDemo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hrscy\/BaiduMapDemo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BFD35816212235F5E886B36A14F39BFD04601F7F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hrscy\/github.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB6F1874BF01D6B5D182347B04875AB968E86B7E"
+    }
+  ]
+}
