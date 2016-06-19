@@ -49,11 +49,10 @@
 
 @implementation YMRouteAnnotationController
 
-- (NSString*)getMyBundlePath1:(NSString *)filename
-{
+- (NSString*)getMyBundlePath1:(NSString *)filename {
     
     NSBundle * libBundle = MYBUNDLE ;
-    if ( libBundle && filename ){
+    if ( libBundle && filename ) {
         NSString * s=[[libBundle resourcePath ] stringByAppendingPathComponent:filename];
         return s;
     }
@@ -61,7 +60,7 @@
 }
 
 #pragma mark 返回按钮
--(void)backButton{
+-(void)backButton {
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 30, 60, 40)];
     [backButton setTitle:@"返回" forState:UIControlStateNormal];
@@ -74,13 +73,12 @@
 }
 
 #pragma mark 返回
--(void)goBack{
+-(void)goBack {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"路径规划";
     _routesearch = [[BMKRouteSearch alloc] init];
     _routesearch.delegate = self;
     
@@ -99,9 +97,10 @@
     [self showDriveSearch];
 }
 
+#pragma mark - 下面这两个方法没有调用，如有需要，可自行调用
 #pragma mark 打开系统自带的地图
--(void)openIOSMapNav{
-    // 消除误差
+-(void)openIOSMapNav {
+    // 消除百度地图坐标和系统地图坐标之间的误差
     double x = self.poi.lng - 0.0065, y = self.poi.lat - 0.006;
     double z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi);
     double theta = atan2(y, x) - 0.000003 * cos(x * x_pi);
@@ -114,6 +113,7 @@
 //    [MKMapItem openMapsWithItems:@[currentLocation, toLocation] launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
 }
 
+#pragma mark 打开百度地图app
 -(void)opsenBaiduMap {
     double latitude = self.userLocation.location.coordinate.latitude;
     double longitude = self.userLocation.location.coordinate.longitude;
@@ -128,14 +128,14 @@
     }
 }
 
-#pragma mark -显示大头针
-- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation{
+#pragma mark - 显示大头针
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
     if (![annotation isKindOfClass:[RouteAnnotation class]]) return nil;
     return [self getRouteAnnotationView:mapView viewForAnnotation:(RouteAnnotation *)annotation];
 }
 
 #pragma mark 获取路线的标注，显示到地图
-- (BMKAnnotationView*)getRouteAnnotationView:(BMKMapView *)mapview viewForAnnotation:(RouteAnnotation*)routeAnnotation{
+- (BMKAnnotationView*)getRouteAnnotationView:(BMKMapView *)mapview viewForAnnotation:(RouteAnnotation*)routeAnnotation {
     
     BMKAnnotationView *view = nil;
     switch (routeAnnotation.type) {
@@ -184,7 +184,7 @@
 }
 
 #pragma mark 驾车路线
--(void)showDriveSearch{
+-(void)showDriveSearch {
     //线路检索节点信息
     BMKPlanNode *start = [[BMKPlanNode alloc] init];
     start.pt = self.userLocation.location.coordinate;
@@ -198,12 +198,12 @@
     drivingRouteSearchOption.to = end;
     BOOL flag = [_routesearch drivingSearch:drivingRouteSearchOption];
     if (flag) {
+        NSLog(@"%s - 设置成功！",__func__);
     }
 }
 
 #pragma mark 返回驾乘搜索结果
-- (void)onGetDrivingRouteResult:(BMKRouteSearch*)searcher result:(BMKDrivingRouteResult*)result errorCode:(BMKSearchErrorCode)error
-{
+- (void)onGetDrivingRouteResult:(BMKRouteSearch*)searcher result:(BMKDrivingRouteResult*)result errorCode:(BMKSearchErrorCode)error {
     NSArray* array = [NSArray arrayWithArray:_mapView.annotations];
     [_mapView removeAnnotations:array];
     array = [NSArray arrayWithArray:_mapView.overlays];
@@ -263,7 +263,6 @@
                 temppoints[i].y = transitStep.points[k].y;
                 i++;
             }
-            
         }
         // 通过points构建BMKPolyline
         BMKPolyline* polyLine = [BMKPolyline polylineWithPoints:temppoints count:planPointCounts];
@@ -274,7 +273,7 @@
 }
 
 #pragma mark 根据overlay生成对应的View
--(BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(id<BMKOverlay>)overlay{
+-(BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(id<BMKOverlay>)overlay {
     if ([overlay isKindOfClass:[BMKPolyline class]]) {
         BMKPolylineView* polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
         polylineView.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:1];
@@ -320,7 +319,7 @@
     [_mapView viewWillAppear];
     [_mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-    _routesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    _routesearch.delegate = self; 
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

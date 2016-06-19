@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"店铺详情";
     self.nameLabel.text = self.poi.name;
     self.areaNameLabel.text = self.poi.areaName;
     

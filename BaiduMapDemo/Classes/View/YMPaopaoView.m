@@ -28,6 +28,7 @@
 
 -(void)setPoi:(YMPoi *)poi {
     _poi = poi;
+    
     [self.shopImage sd_setImageWithURL:[NSURL URLWithString:poi.frontImg]];
     self.nameLabel.text = poi.name;
     self.areaNameLabel.text = poi.areaName;

@@ -31,7 +31,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = @"百度地图";
+    cell.textLabel.text = @"1.百度地图&路径规划";
     return cell;
 }
 

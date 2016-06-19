@@ -30,12 +30,8 @@
     BMKGeoCodeSearch *_geoSearch;
 }
 
-/** 定位管理者*/
-@property (nonatomic, strong) CLLocationManager *manager;
 /** 用户当前位置*/
 @property(nonatomic , strong) BMKUserLocation *userLocation;
-/** 存放标注数组*/
-@property(nonatomic , strong) NSMutableArray *pois;
 /** 当前城市*/
 @property (nonatomic, copy) NSString *city;
 /** 地理解析*/
@@ -47,15 +43,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // 设置百度地图
     [self setupMapViewWithParam];
-    
+    // 加载美图数据，加载数据可以根据自己的需求
     [self loadMeituanData];
 }
 
 #pragma mark - 加载美图数据
 -(void)loadMeituanData {
     NSString *urlString = @"http://api.meituan.com/meishi/filter/v4/deal/select/city/1/area/14/cate/1?__skua=58c45e3fe9ccacce6400c5a736b76480&userid=267752722&__vhost=api.meishi.meituan.com&movieBundleVersion=100&wifi-mac=8c%3Af2%3A28%3Afc%3A41%3A92&utm_term=6.5.1&limit=25&ci=1&__skcy=jyDTYwzfsbzflQbUtxRRR1RK2Ag%3D&__skts=1466298960.130064&sort=defaults&__skno=5210AD02-055C-47B7-BD23-A26EB36E2A20&wifi-name=MERCURY_4192&uuid=E158E8C43627D4B0B2BA94FC17DD78F08B7148D4A037A9933F3180FC1E550587&utm_content=E158E8C43627D4B0B2BA94FC17DD78F08B7148D4A037A9933F3180FC1E550587&utm_source=AppStore&version_name=6.5.1&mypos=38.300178%2C116.909954&utm_medium=iphone&wifi-strength=&wifi-cur=0&offset=0&poiFields=cityId%2Clng%2CfrontImg%2CavgPrice%2CavgScore%2Cname%2Clat%2CcateName%2CareaName%2CcampaignTag%2Cabstracts%2Crecommendation%2CpayInfo%2CpayAbstracts%2CqueueStatus&hasGroup=true&utm_campaign=AgroupBgroupD200Ghomepage_category1_1__a1&__skck=3c0cf64e4b039997339ed8fec4cddf05&msid=AE66B26D-47FB-4959-B3F3-FE25606FF0CB2016-06-19-09-1327";
+    // 加载进度
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
@@ -71,11 +68,9 @@
             annotation.coordinate = coordinate;
             annotation.poi = poi;
             [_mapView addAnnotation:annotation];
-            [self.pois addObject:poi];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        
     }];
 }
 
@@ -120,7 +115,8 @@
 -(void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
     BMKAddressComponent *addressComponent = result.addressDetail;
     self.city = addressComponent.city;
-    self.userLocation.title = [NSString stringWithFormat:@"%@%@%@", addressComponent.district, addressComponent.streetName, addressComponent.streetNumber];
+    NSString *title = [NSString stringWithFormat:@"%@%@%@%@", addressComponent.city, addressComponent.district, addressComponent.streetName, addressComponent.streetNumber];
+    NSLog(@"%s -- %@", __func__, title);
 }
 
 #pragma mark -BMKMapViewDelegate
@@ -155,7 +151,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [_mapView viewWillAppear];
-    _mapView.delegate = self;
+    _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     _geoSearch.delegate = self;
 }
@@ -163,13 +159,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(NSMutableArray *)pois{
-    if (_pois == nil) {
-        _pois = [[NSMutableArray alloc] init];
-    }
-    return _pois;
 }
 
 @end
