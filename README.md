@@ -1,7 +1,7 @@
-## iOS百度地图Demo
-
+# iOS百度地图 Demo
 ## 效果图
 ![效果图](http://img.blog.csdn.net/20160619190252047)
+![效果图-新增](http://img.blog.csdn.net/20160705163906050)
 ## 一、环境设置
 
 1.开发环境：Xocode 7.3.1
@@ -94,23 +94,109 @@ pod install --no-repo-update
 ### 代码结构：
 
 - Classess
-	- Controller
+	- **百度地图&路径规划**
+	- **覆盖物**
+		- **YMAnnotationViewController** - 自定义标注拖动控制器
+		- **YMAnnotationController** - 系统标注拖动控制器
+	-  **主控制器**
 		- **YMTableViewController** - 刚进入程序的控制器
-		- **YMMapViewController** - 百度地图控制器
-		- **YMPoiDetailViewController** - 店铺详情控制器
-		- **YMRouteAnnotationController** - 路径规划控制器
-	- Model
-		- **YMPoi** - 店铺模型
-		- **YMPointAnnotation** - 标注模型 
-	- View
-		- **YMAnnotationView** - 标注视图
-		- **YMPaopaoView** - 点击标注弹出自定义的泡泡
-	- Category
+			- **Controller**	
+				- **YMMapViewController** - 百度地图控制器
+				- **YMPoiDetailViewController** - 店铺详情控制器
+				- **YMRouteAnnotationController** - 路径规划控制器
+			- **Model**
+				- **YMPoi** - 店铺模型
+				- **YMPointAnnotation** - 标注模型 
+			- **View**
+				- **YMAnnotationView** - 标注视图
+				- **YMPaopaoView** - 点击标注弹出自定义的泡泡
+	- **Category**
 		- **UIImage+Rotate** - 路径规划界面 image 的扩展
 
 > 注意：
 > 1. 需要把 AppDelegate.m 改成 AppDelegate.mm 文件
 > 2. 需要把路径规划控制也写成 .mm 后缀，即YMRouteAnnotationController.mm。
+
+### 新增功能:
+
+-----
+
+#### 2016 年 7 月 5 日
+
+新增两个控制器，分别是 **YMAnnotationViewController**，**YMAnnotationController**，可以对自定义的标注和系统的标注进行拖动操作。
+
+百度地图提供了下面的代理方法：
+
+```
+/**
+ *拖动annotation view时，若view的状态发生变化，会调用此函数。ios3.2以后支持
+ *@param mapView 地图View
+ *@param view annotation view
+ *@param newState 新状态
+ *@param oldState 旧状态
+ */
+- (void)mapView:(BMKMapView *)mapView annotationView:(BMKAnnotationView *)view didChangeDragState:(BMKAnnotationViewDragState)newState
+   fromOldState:(BMKAnnotationViewDragState)oldState;
+```
+
+但是我进行设置的时候上面的方法并不起作用，可能使用的方式不对...
+
+所以我使用了下面的方法：
+
+```
+/**
+ *当选中一个annotation views时，调用此接口
+ *@param mapView 地图View
+ *@param views 选中的annotation views
+ */
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view;
+
+/**
+ *当取消选中一个annotation views时，调用此接口
+ *@param mapView 地图View
+ *@param views 取消选中的annotation views
+ */
+- (void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)view;
+```
+
+这样设置之后，每次在当我点击的时候大头针的时候，大头针处于选中状态，这次设置大头针为开始拖动状态，然后拖动地图，取消选中的时候，设置大头针为结束拖动状态。
+
+如下代码：
+
+```
+/**
+ *当选中一个annotation views时，调用此接口
+ *@param mapView 地图View
+ *@param views 选中的annotation views
+ */
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+    // 当选中标注的之后，设置开始拖动状态
+    view.dragState = BMKAnnotationViewDragStateStarting;
+}
+
+/**
+ *当取消选中一个annotation views时，调用此接口
+ *@param mapView 地图View
+ *@param views 取消选中的annotation views
+ */
+- (void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)annotationView {
+    // 取消选中标注后，停止拖动状态
+    annotationView.dragState = BMKAnnotationViewDragStateEnding;
+    // 设置转换的坐标会有一些偏差，具体可以再调节坐标的 (x, y) 值
+    CGPoint dropPoint = CGPointMake(annotationView.center.x, CGRectGetMaxY(annotationView.frame));
+    CLLocationCoordinate2D newCoordinate = [_mapView convertPoint:dropPoint toCoordinateFromView:annotationView.superview];
+    [annotationView.annotation setCoordinate:newCoordinate];
+    /// geo检索信息类,获取当前城市数据
+    BMKReverseGeoCodeOption *reverseGeoCodeOption = [[BMKReverseGeoCodeOption alloc] init];
+    reverseGeoCodeOption.reverseGeoPoint = newCoordinate;
+    [_geoSearch reverseGeoCode:reverseGeoCodeOption];
+}
+```
+
+
+----
+
+### 说明：
 
 1.在 AppDelegate.mm 的 `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions` 中设置百度地图管理者，需要在百度地图 API 控制台设置 AppKey：
 
@@ -129,13 +215,13 @@ NSString *mapKey = @"x5EHcRvWZm8uzkt3HUpGBQU3";
 解决办法如下：
 ![这里写图片描述](http://img.blog.csdn.net/20160619190052797)
 
-
 再次运行就不会报错了。
 
 3.说明：地图上的标注抓取的是美团的数据。
 
 > **说明：**
 > **这只是一个简单的 demo，写的比较粗糙，大家可以给我留言，需要完成什么样的功能，如果有时间，我会尽力加上需要的功能，后面我还会继续更新。谢谢大家的支持！如果你觉得我写的 demo 对你有所帮助，请在 github 上下载的时候顺手给个 star，不胜感激！**
+
 
 ### **下面是 demo 下载地址：**
 
