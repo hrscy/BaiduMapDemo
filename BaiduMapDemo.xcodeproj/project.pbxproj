@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		943BD58D1D163F0200E373D3 /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD5771D163F0200E373D3 /* UIImage+Rotate.m */; };
-		943BD58E1D163F0200E373D3 /* YMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD57A1D163F0200E373D3 /* YMMapViewController.m */; };
-		943BD58F1D163F0200E373D3 /* YMPoiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD57C1D163F0200E373D3 /* YMPoiDetailViewController.m */; };
-		943BD5901D163F0200E373D3 /* YMPoiDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943BD57D1D163F0200E373D3 /* YMPoiDetailViewController.xib */; };
-		943BD5911D163F0200E373D3 /* YMRouteAnnotationController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 943BD57F1D163F0200E373D3 /* YMRouteAnnotationController.mm */; };
-		943BD5921D163F0200E373D3 /* YMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD5811D163F0200E373D3 /* YMTableViewController.m */; };
-		943BD5931D163F0200E373D3 /* YMPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD5841D163F0200E373D3 /* YMPoi.m */; };
-		943BD5941D163F0200E373D3 /* YMPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD5861D163F0200E373D3 /* YMPointAnnotation.m */; };
-		943BD5951D163F0200E373D3 /* YMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD5891D163F0200E373D3 /* YMAnnotationView.m */; };
-		943BD5961D163F0200E373D3 /* YMPaopaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 943BD58B1D163F0200E373D3 /* YMPaopaoView.m */; };
-		943BD5971D163F0200E373D3 /* YMPaopaoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 943BD58C1D163F0200E373D3 /* YMPaopaoView.xib */; };
+		25A206211D2B829F00661B81 /* YMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2060A1D2B829F00661B81 /* YMMapViewController.m */; };
+		25A206221D2B829F00661B81 /* YMPoiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2060C1D2B829F00661B81 /* YMPoiDetailViewController.m */; };
+		25A206231D2B829F00661B81 /* YMPoiDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A2060D1D2B829F00661B81 /* YMPoiDetailViewController.xib */; };
+		25A206241D2B829F00661B81 /* YMRouteAnnotationController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 25A2060F1D2B829F00661B81 /* YMRouteAnnotationController.mm */; };
+		25A206251D2B829F00661B81 /* YMPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A206121D2B829F00661B81 /* YMPoi.m */; };
+		25A206261D2B829F00661B81 /* YMPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A206141D2B829F00661B81 /* YMPointAnnotation.m */; };
+		25A206271D2B829F00661B81 /* YMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A206171D2B829F00661B81 /* YMAnnotationView.m */; };
+		25A206281D2B829F00661B81 /* YMPaopaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A206191D2B829F00661B81 /* YMPaopaoView.m */; };
+		25A206291D2B829F00661B81 /* YMPaopaoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A2061A1D2B829F00661B81 /* YMPaopaoView.xib */; };
+		25A2062A1D2B829F00661B81 /* YMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A2061D1D2B829F00661B81 /* YMTableViewController.m */; };
+		25A2062B1D2B829F00661B81 /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A206201D2B829F00661B81 /* UIImage+Rotate.m */; };
+		25A206321D2B854600661B81 /* YMAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A206311D2B854600661B81 /* YMAnnotationViewController.m */; };
+		25A206381D2B9B2900661B81 /* YMAnnotationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A206371D2B9B2900661B81 /* YMAnnotationController.m */; };
 		94FCED081D14E085004DA6C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FCED071D14E085004DA6C3 /* main.m */; };
 		94FCED0B1D14E085004DA6C3 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94FCED0A1D14E085004DA6C3 /* AppDelegate.mm */; };
 		94FCED111D14E085004DA6C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94FCED0F1D14E085004DA6C3 /* Main.storyboard */; };
@@ -44,27 +46,31 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25A206091D2B829F00661B81 /* YMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMapViewController.h; sourceTree = "<group>"; };
+		25A2060A1D2B829F00661B81 /* YMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMapViewController.m; sourceTree = "<group>"; };
+		25A2060B1D2B829F00661B81 /* YMPoiDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPoiDetailViewController.h; sourceTree = "<group>"; };
+		25A2060C1D2B829F00661B81 /* YMPoiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPoiDetailViewController.m; sourceTree = "<group>"; };
+		25A2060D1D2B829F00661B81 /* YMPoiDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMPoiDetailViewController.xib; sourceTree = "<group>"; };
+		25A2060E1D2B829F00661B81 /* YMRouteAnnotationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMRouteAnnotationController.h; sourceTree = "<group>"; };
+		25A2060F1D2B829F00661B81 /* YMRouteAnnotationController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YMRouteAnnotationController.mm; sourceTree = "<group>"; };
+		25A206111D2B829F00661B81 /* YMPoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPoi.h; sourceTree = "<group>"; };
+		25A206121D2B829F00661B81 /* YMPoi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPoi.m; sourceTree = "<group>"; };
+		25A206131D2B829F00661B81 /* YMPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPointAnnotation.h; sourceTree = "<group>"; };
+		25A206141D2B829F00661B81 /* YMPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPointAnnotation.m; sourceTree = "<group>"; };
+		25A206161D2B829F00661B81 /* YMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAnnotationView.h; sourceTree = "<group>"; };
+		25A206171D2B829F00661B81 /* YMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMAnnotationView.m; sourceTree = "<group>"; };
+		25A206181D2B829F00661B81 /* YMPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPaopaoView.h; sourceTree = "<group>"; };
+		25A206191D2B829F00661B81 /* YMPaopaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPaopaoView.m; sourceTree = "<group>"; };
+		25A2061A1D2B829F00661B81 /* YMPaopaoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMPaopaoView.xib; sourceTree = "<group>"; };
+		25A2061C1D2B829F00661B81 /* YMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMTableViewController.h; sourceTree = "<group>"; };
+		25A2061D1D2B829F00661B81 /* YMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMTableViewController.m; sourceTree = "<group>"; };
+		25A2061F1D2B829F00661B81 /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		25A206201D2B829F00661B81 /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		25A206301D2B854600661B81 /* YMAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAnnotationViewController.h; sourceTree = "<group>"; };
+		25A206311D2B854600661B81 /* YMAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMAnnotationViewController.m; sourceTree = "<group>"; };
+		25A206361D2B9B2900661B81 /* YMAnnotationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAnnotationController.h; sourceTree = "<group>"; };
+		25A206371D2B9B2900661B81 /* YMAnnotationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMAnnotationController.m; sourceTree = "<group>"; };
 		5CD80525F8C2ABD30552F6D0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		943BD5761D163F0200E373D3 /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
-		943BD5771D163F0200E373D3 /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
-		943BD5791D163F0200E373D3 /* YMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMapViewController.h; sourceTree = "<group>"; };
-		943BD57A1D163F0200E373D3 /* YMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMapViewController.m; sourceTree = "<group>"; };
-		943BD57B1D163F0200E373D3 /* YMPoiDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPoiDetailViewController.h; sourceTree = "<group>"; };
-		943BD57C1D163F0200E373D3 /* YMPoiDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPoiDetailViewController.m; sourceTree = "<group>"; };
-		943BD57D1D163F0200E373D3 /* YMPoiDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMPoiDetailViewController.xib; sourceTree = "<group>"; };
-		943BD57E1D163F0200E373D3 /* YMRouteAnnotationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMRouteAnnotationController.h; sourceTree = "<group>"; };
-		943BD57F1D163F0200E373D3 /* YMRouteAnnotationController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YMRouteAnnotationController.mm; sourceTree = "<group>"; };
-		943BD5801D163F0200E373D3 /* YMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMTableViewController.h; sourceTree = "<group>"; };
-		943BD5811D163F0200E373D3 /* YMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMTableViewController.m; sourceTree = "<group>"; };
-		943BD5831D163F0200E373D3 /* YMPoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPoi.h; sourceTree = "<group>"; };
-		943BD5841D163F0200E373D3 /* YMPoi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPoi.m; sourceTree = "<group>"; };
-		943BD5851D163F0200E373D3 /* YMPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPointAnnotation.h; sourceTree = "<group>"; };
-		943BD5861D163F0200E373D3 /* YMPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPointAnnotation.m; sourceTree = "<group>"; };
-		943BD5881D163F0200E373D3 /* YMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAnnotationView.h; sourceTree = "<group>"; };
-		943BD5891D163F0200E373D3 /* YMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMAnnotationView.m; sourceTree = "<group>"; };
-		943BD58A1D163F0200E373D3 /* YMPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPaopaoView.h; sourceTree = "<group>"; };
-		943BD58B1D163F0200E373D3 /* YMPaopaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPaopaoView.m; sourceTree = "<group>"; };
-		943BD58C1D163F0200E373D3 /* YMPaopaoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMPaopaoView.xib; sourceTree = "<group>"; };
 		94FCED031D14E085004DA6C3 /* BaiduMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiduMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FCED071D14E085004DA6C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		94FCED091D14E085004DA6C3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +128,106 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25A206071D2B829F00661B81 /* 百度地图&路径规划 */ = {
+			isa = PBXGroup;
+			children = (
+				25A206081D2B829F00661B81 /* Controller */,
+				25A206101D2B829F00661B81 /* Model */,
+				25A206151D2B829F00661B81 /* View */,
+			);
+			path = "百度地图&路径规划";
+			sourceTree = "<group>";
+		};
+		25A206081D2B829F00661B81 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				25A206091D2B829F00661B81 /* YMMapViewController.h */,
+				25A2060A1D2B829F00661B81 /* YMMapViewController.m */,
+				25A2060B1D2B829F00661B81 /* YMPoiDetailViewController.h */,
+				25A2060C1D2B829F00661B81 /* YMPoiDetailViewController.m */,
+				25A2060D1D2B829F00661B81 /* YMPoiDetailViewController.xib */,
+				25A2060E1D2B829F00661B81 /* YMRouteAnnotationController.h */,
+				25A2060F1D2B829F00661B81 /* YMRouteAnnotationController.mm */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		25A206101D2B829F00661B81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25A206111D2B829F00661B81 /* YMPoi.h */,
+				25A206121D2B829F00661B81 /* YMPoi.m */,
+				25A206131D2B829F00661B81 /* YMPointAnnotation.h */,
+				25A206141D2B829F00661B81 /* YMPointAnnotation.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		25A206151D2B829F00661B81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				25A206161D2B829F00661B81 /* YMAnnotationView.h */,
+				25A206171D2B829F00661B81 /* YMAnnotationView.m */,
+				25A206181D2B829F00661B81 /* YMPaopaoView.h */,
+				25A206191D2B829F00661B81 /* YMPaopaoView.m */,
+				25A2061A1D2B829F00661B81 /* YMPaopaoView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		25A2061B1D2B829F00661B81 /* 主控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				25A2061C1D2B829F00661B81 /* YMTableViewController.h */,
+				25A2061D1D2B829F00661B81 /* YMTableViewController.m */,
+			);
+			path = "主控制器";
+			sourceTree = "<group>";
+		};
+		25A2061E1D2B829F00661B81 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				25A2061F1D2B829F00661B81 /* UIImage+Rotate.h */,
+				25A206201D2B829F00661B81 /* UIImage+Rotate.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		25A2062C1D2B830F00661B81 /* 覆盖物 */ = {
+			isa = PBXGroup;
+			children = (
+				25A2062D1D2B830F00661B81 /* Controller */,
+				25A2062E1D2B830F00661B81 /* Model */,
+				25A2062F1D2B830F00661B81 /* View */,
+			);
+			path = "覆盖物";
+			sourceTree = "<group>";
+		};
+		25A2062D1D2B830F00661B81 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				25A206301D2B854600661B81 /* YMAnnotationViewController.h */,
+				25A206311D2B854600661B81 /* YMAnnotationViewController.m */,
+				25A206361D2B9B2900661B81 /* YMAnnotationController.h */,
+				25A206371D2B9B2900661B81 /* YMAnnotationController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		25A2062E1D2B830F00661B81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		25A2062F1D2B830F00661B81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		943BD5731D163E8800E373D3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,60 +239,12 @@
 		943BD5741D163F0200E373D3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				943BD5751D163F0200E373D3 /* Category */,
-				943BD5781D163F0200E373D3 /* Controller */,
-				943BD5821D163F0200E373D3 /* Model */,
-				943BD5871D163F0200E373D3 /* View */,
+				25A2062C1D2B830F00661B81 /* 覆盖物 */,
+				25A206071D2B829F00661B81 /* 百度地图&路径规划 */,
+				25A2061B1D2B829F00661B81 /* 主控制器 */,
+				25A2061E1D2B829F00661B81 /* Category */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		943BD5751D163F0200E373D3 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				943BD5761D163F0200E373D3 /* UIImage+Rotate.h */,
-				943BD5771D163F0200E373D3 /* UIImage+Rotate.m */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		943BD5781D163F0200E373D3 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				943BD5791D163F0200E373D3 /* YMMapViewController.h */,
-				943BD57A1D163F0200E373D3 /* YMMapViewController.m */,
-				943BD57B1D163F0200E373D3 /* YMPoiDetailViewController.h */,
-				943BD57C1D163F0200E373D3 /* YMPoiDetailViewController.m */,
-				943BD57D1D163F0200E373D3 /* YMPoiDetailViewController.xib */,
-				943BD57E1D163F0200E373D3 /* YMRouteAnnotationController.h */,
-				943BD57F1D163F0200E373D3 /* YMRouteAnnotationController.mm */,
-				943BD5801D163F0200E373D3 /* YMTableViewController.h */,
-				943BD5811D163F0200E373D3 /* YMTableViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		943BD5821D163F0200E373D3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				943BD5831D163F0200E373D3 /* YMPoi.h */,
-				943BD5841D163F0200E373D3 /* YMPoi.m */,
-				943BD5851D163F0200E373D3 /* YMPointAnnotation.h */,
-				943BD5861D163F0200E373D3 /* YMPointAnnotation.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		943BD5871D163F0200E373D3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				943BD5881D163F0200E373D3 /* YMAnnotationView.h */,
-				943BD5891D163F0200E373D3 /* YMAnnotationView.m */,
-				943BD58A1D163F0200E373D3 /* YMPaopaoView.h */,
-				943BD58B1D163F0200E373D3 /* YMPaopaoView.m */,
-				943BD58C1D163F0200E373D3 /* YMPaopaoView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		94FCECFA1D14E085004DA6C3 = {
@@ -325,10 +383,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				94FCED4D1D15353C004DA6C3 /* mapapi.bundle in Resources */,
-				943BD5971D163F0200E373D3 /* YMPaopaoView.xib in Resources */,
-				943BD5901D163F0200E373D3 /* YMPoiDetailViewController.xib in Resources */,
 				94FCED161D14E085004DA6C3 /* LaunchScreen.storyboard in Resources */,
+				25A206231D2B829F00661B81 /* YMPoiDetailViewController.xib in Resources */,
 				94FCED131D14E085004DA6C3 /* Assets.xcassets in Resources */,
+				25A206291D2B829F00661B81 /* YMPaopaoView.xib in Resources */,
 				94FCED111D14E085004DA6C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,17 +446,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				943BD5941D163F0200E373D3 /* YMPointAnnotation.m in Sources */,
-				943BD5961D163F0200E373D3 /* YMPaopaoView.m in Sources */,
-				943BD58F1D163F0200E373D3 /* YMPoiDetailViewController.m in Sources */,
-				943BD58D1D163F0200E373D3 /* UIImage+Rotate.m in Sources */,
+				25A206281D2B829F00661B81 /* YMPaopaoView.m in Sources */,
+				25A206251D2B829F00661B81 /* YMPoi.m in Sources */,
+				25A206271D2B829F00661B81 /* YMAnnotationView.m in Sources */,
+				25A206381D2B9B2900661B81 /* YMAnnotationController.m in Sources */,
+				25A2062A1D2B829F00661B81 /* YMTableViewController.m in Sources */,
 				94FCED0B1D14E085004DA6C3 /* AppDelegate.mm in Sources */,
+				25A206241D2B829F00661B81 /* YMRouteAnnotationController.mm in Sources */,
+				25A206211D2B829F00661B81 /* YMMapViewController.m in Sources */,
+				25A206261D2B829F00661B81 /* YMPointAnnotation.m in Sources */,
+				25A206221D2B829F00661B81 /* YMPoiDetailViewController.m in Sources */,
+				25A2062B1D2B829F00661B81 /* UIImage+Rotate.m in Sources */,
 				94FCED081D14E085004DA6C3 /* main.m in Sources */,
-				943BD58E1D163F0200E373D3 /* YMMapViewController.m in Sources */,
-				943BD5911D163F0200E373D3 /* YMRouteAnnotationController.mm in Sources */,
-				943BD5931D163F0200E373D3 /* YMPoi.m in Sources */,
-				943BD5951D163F0200E373D3 /* YMAnnotationView.m in Sources */,
-				943BD5921D163F0200E373D3 /* YMTableViewController.m in Sources */,
+				25A206321D2B854600661B81 /* YMAnnotationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

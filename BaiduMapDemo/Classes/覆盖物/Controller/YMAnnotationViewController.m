@@ -1,52 +1,70 @@
 //
-//  ViewController.m
+//  YMAnnotationViewController.m
 //  BaiduMapDemo
 //
-//  Created by 杨蒙 on 16/6/18.
+//  Created by 杨蒙 on 16/7/5.
 //  Copyright © 2016年 hrscy. All rights reserved.
 //
 
-#import "YMMapViewController.h"
+#import "YMAnnotationViewController.h"
 #import <BaiduMapAPI_Map/BMKMapView.h>
 #import <BaiduMapAPI_Map/BMKAnnotationView.h>
 #import <BaiduMapAPI_Location/BMKLocationService.h>
 #import <BaiduMapAPI_Utils/BMKGeometry.h>
 #import <BaiduMapAPI_Search/BMKGeocodeSearch.h>
-#import "AFNetworking.h"
-#import "YMPoi.h"
-#import "MJExtension.h"
 #import "YMPointAnnotation.h"
-#import "YMAnnotationView.h"
 #import "YMPaopaoView.h"
 #import "SVProgressHUD.h"
 #import "YMPoiDetailViewController.h"
+#import "AFNetworking.h"
+#import "YMPoi.h"
+#import "MJExtension.h"
+#import "YMAnnotationView.h"
 
 #define SCREENW [UIScreen mainScreen].bounds.size.width
 #define SCREENH [UIScreen mainScreen].bounds.size.height
 
-@interface YMMapViewController ()<BMKLocationServiceDelegate, BMKMapViewDelegate, BMKGeoCodeSearchDelegate, YMPaopaoViewDelagate>{
+@interface YMAnnotationViewController () <BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>{
     BMKMapView *_mapView;
     BMKLocationService *_locService;
     BMKGeoCodeSearch *_geoSearch;
 }
-
 /** 用户当前位置*/
 @property(nonatomic , strong) BMKUserLocation *userLocation;
-/** 当前城市*/
-@property (nonatomic, copy) NSString *city;
-/** 地理解析*/
-@property (nonatomic, strong) CLGeocoder *geocoder;
 
 @end
 
-@implementation YMMapViewController
+@implementation YMAnnotationViewController
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
-    // 设置百度地图
+    /// 设置百度地图
     [self setupMapViewWithParam];
-    // 加载美图数据，加载数据可以根据自己的需求
+    
     [self loadMeituanData];
+}
+
+#pragma mark - 设置百度地图
+-(void)setupMapViewWithParam {
+    self.userLocation = [[BMKUserLocation alloc] init];
+    _locService = [[BMKLocationService alloc] init];
+    _locService.distanceFilter = 200;//设定定位的最小更新距离，这里设置 200m 定位一次，频繁定位会增加耗电量
+    _locService.desiredAccuracy = kCLLocationAccuracyHundredMeters;//设定定位精度
+    //开启定位服务
+    [_locService startUserLocationService];
+    //初始化BMKMapView
+    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 64, SCREENW, SCREENH - 64)];
+    _mapView.buildingsEnabled = YES;//设定地图是否现显示3D楼块效果
+    _mapView.overlookEnabled = YES; //设定地图View能否支持俯仰角
+    _mapView.showMapScaleBar = YES; // 设定是否显式比例尺
+    _mapView.zoomLevel = 12;//设置放大级别
+    [self.view addSubview:_mapView];
+    
+    _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
+    _mapView.showsUserLocation = YES;//显示定位图层
+    BMKLocationViewDisplayParam *userlocationStyle = [[BMKLocationViewDisplayParam alloc] init];
+    userlocationStyle.isRotateAngleValid = YES;
+    userlocationStyle.isAccuracyCircleShow = NO;
 }
 
 #pragma mark - 加载美图数据
@@ -73,71 +91,71 @@
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
-
-#pragma mark - 设置百度地图
--(void)setupMapViewWithParam {
-    self.userLocation = [[BMKUserLocation alloc] init];
-    _geoSearch = [[BMKGeoCodeSearch alloc] init];
-    _locService = [[BMKLocationService alloc] init];
-    _locService.distanceFilter = 200;//设定定位的最小更新距离，这里设置 200m 定位一次，频繁定位会增加耗电量
-    _locService.desiredAccuracy = kCLLocationAccuracyHundredMeters;//设定定位精度
-    //开启定位服务
-    [_locService startUserLocationService];
-    //初始化BMKMapView
-    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 64, SCREENW, SCREENH - 64)];
-    
-    _mapView.buildingsEnabled = YES;//设定地图是否现显示3D楼块效果
-    _mapView.overlookEnabled = YES; //设定地图View能否支持俯仰角
-    _mapView.showMapScaleBar = YES; // 设定是否显式比例尺
-//    _mapView.overlooking = -45;     // 地图俯视角度，在手机上当前可使用的范围为－45～0度
-    
-    _mapView.zoomLevel = 12;//设置放大级别
-    [self.view addSubview:_mapView];
-    _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
-    _mapView.showsUserLocation = YES;//显示定位图层
-    BMKLocationViewDisplayParam *userlocationStyle = [[BMKLocationViewDisplayParam alloc] init];
-    userlocationStyle.isRotateAngleValid = YES;
-    userlocationStyle.isAccuracyCircleShow = NO;
-}
-
 #pragma mark - BMKLocationServiceDelegate 用户位置更新后，会调用此函数
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
     [_mapView updateLocationData:userLocation];// 动态更新我的位置数据
     self.userLocation = userLocation;
     [_mapView setCenterCoordinate:userLocation.location.coordinate];// 当前地图的中心点
-    /// geo检索信息类,获取当前城市数据
-    BMKReverseGeoCodeOption *reverseGeoCodeOption = [[BMKReverseGeoCodeOption alloc] init];
-    reverseGeoCodeOption.reverseGeoPoint = userLocation.location.coordinate;
-    [_geoSearch reverseGeoCode:reverseGeoCodeOption];
 }
 
-#pragma mark 根据坐标返回反地理编码搜索结果
--(void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
-    BMKAddressComponent *addressComponent = result.addressDetail;
-    self.city = addressComponent.city;
-    NSString *title = [NSString stringWithFormat:@"%@%@%@%@", addressComponent.city, addressComponent.district, addressComponent.streetName, addressComponent.streetNumber];
-    NSLog(@"%s -- %@", __func__, title);
-}
 
 #pragma mark -BMKMapViewDelegate
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
     // 创建大头针
     YMAnnotationView *annotationView = [YMAnnotationView annotationViewWithMap:mapView withAnnotation:annotation];
+    annotationView.draggable = YES;
     YMPaopaoView *paopaoView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([YMPaopaoView class]) owner:nil options:nil] lastObject];
-    paopaoView.delegate = self;
     YMPointAnnotation *anno = (YMPointAnnotation *)annotationView.annotation;
     paopaoView.poi = anno.poi;
     annotationView.paopaoView = [[BMKActionPaopaoView alloc] initWithCustomView:paopaoView];
     return annotationView;
 }
 
-#pragma mark YMPaopaoViewDelagate
--(void)paopaoView:(YMPaopaoView *)paopapView coverButtonClickWithPoi:(YMPoi *)poi {
-    YMPoiDetailViewController *detailVC = [[YMPoiDetailViewController alloc] init];
-    detailVC.city = self.city;
-    detailVC.poi = poi;
-    detailVC.userLocation = self.userLocation;
-    [self.navigationController pushViewController:detailVC animated:YES];
+/**
+ *当选中一个annotation views时，调用此接口
+ *@param mapView 地图View
+ *@param views 选中的annotation views
+ */
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+    // 当选中标注的之后，设置开始拖动状态
+    view.dragState = BMKAnnotationViewDragStateStarting;
+}
+
+/**
+ *当取消选中一个annotation views时，调用此接口
+ *@param mapView 地图View
+ *@param views 取消选中的annotation views
+ */
+- (void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)annotationView {
+    // 取消选中标注后，停止拖动状态
+    annotationView.dragState = BMKAnnotationViewDragStateEnding;
+    // 设置转换的坐标会有一些偏差，具体可以再调节坐标的 (x, y) 值
+    CGPoint dropPoint = CGPointMake(annotationView.center.x, CGRectGetMaxY(annotationView.frame));
+    CLLocationCoordinate2D newCoordinate = [_mapView convertPoint:dropPoint toCoordinateFromView:annotationView.superview];
+    [annotationView.annotation setCoordinate:newCoordinate];
+    /// geo检索信息类,获取当前城市数据
+    BMKReverseGeoCodeOption *reverseGeoCodeOption = [[BMKReverseGeoCodeOption alloc] init];
+    reverseGeoCodeOption.reverseGeoPoint = newCoordinate;
+    [_geoSearch reverseGeoCode:reverseGeoCodeOption];
+}
+
+#pragma mark 根据坐标返回反地理编码搜索结果
+-(void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
+    BMKAddressComponent *addressComponent = result.addressDetail;
+    NSString *title = [NSString stringWithFormat:@"%@%@%@%@", addressComponent.city, addressComponent.district, addressComponent.streetName, addressComponent.streetNumber];
+    NSLog(@"%s -- %@", __func__, title);
+}
+
+/**
+ *拖动annotation view时，若view的状态发生变化，会调用此函数。ios3.2以后支持
+ *@param mapView 地图View
+ *@param view annotation view
+ *@param newState 新状态
+ *@param oldState 旧状态
+ */
+- (void)mapView:(BMKMapView *)mapView annotationView:(BMKAnnotationView *)annotationView didChangeDragState:(BMKAnnotationViewDragState)newState
+   fromOldState:(BMKAnnotationViewDragState)oldState {
+    // -------- 这个方法不起作用 -----------
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -154,11 +172,6 @@
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate = self;
     _geoSearch.delegate = self;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

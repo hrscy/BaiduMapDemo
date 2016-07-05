@@ -13,5 +13,7 @@
 
 /** poi*/
 @property (nonatomic, strong) YMPoi *poi;
+/** 标注点的protocol，提供了标注类的基本信息函数*/
+@property (nonatomic, weak) id<BMKAnnotation> delegate;
 
 @end

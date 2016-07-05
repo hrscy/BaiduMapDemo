@@ -14,7 +14,6 @@
 
 - (instancetype)initWithAnnotation:(id<BMKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
-        
     }
     return self;
 }
